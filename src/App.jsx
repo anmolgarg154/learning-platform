@@ -14,7 +14,6 @@ import Logout from "./Components/Logout";
 import AddCourse from "./Components/Admin/AddCourse"
 import NewCourses from "./Components/NewCourses";
 import Profile from "./Components/Profile";
-import Admin from "./Components/Admin/Admin";
 
 function App() {
   return (
@@ -32,7 +31,6 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/logout" element={<Logout/>}/>
-        <Route path="/admin" element={<Admin/>}/>
         <Route path="/new" element={<NewCourses/>}/>
         <Route path="/profile" element={<Profile/>}/>
         <Route path="/add" element={<AddCourse/>}/>
