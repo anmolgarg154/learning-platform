@@ -146,7 +146,7 @@ function Packs() {
                         {/* STEP 2 */}
                         <div className="bg-white text-black rounded-2xl p-6 flex items-center gap-6 shadow">
                             <div className="relative w-16 h-16">
-                                <svg className="w-full h-full rotate-[-90deg]">
+                                <svg className="w-full h-full ">
                                     <circle
                                         cx="32"
                                         cy="32"

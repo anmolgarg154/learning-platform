@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function AboutUs() {
   return (
-    <div className="bg-gradient-to-br from-purple-300 to-yellow-50">
+    <div className="bg-gradient from-purple-300 to-yellow-50">
 
       {/* HERO SECTION */}
       <section className="py-20 px-6 lg:px-24">
