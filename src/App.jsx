@@ -25,16 +25,16 @@ function App() {
         <Route path="/courses/:id" element={<CourseDetails />} />
         <Route path="/packs" element={<Packs />} />
         <Route path="/aa" element={<Single />} />
-        <Route path="/about-us" element={<AboutUs />} />
-<Route path="/career" element={<CareerSupport />} />
+        <Route path="/about-Us" element={<AboutUs />} />
+        <Route path="/career" element={<CareerSupport />} />
 
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/logout" element={<Logout/>}/>
-        <Route path="/new" element={<NewCourses/>}/>
-        <Route path="/profile" element={<Profile/>}/>
-        <Route path="/add" element={<AddCourse/>}/>
+        <Route path="/logout" element={<Logout />} />
+        <Route path="/new" element={<NewCourses />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/add" element={<AddCourse />} />
       </Route>
 
       {/* Admin route (no header/footer) */}

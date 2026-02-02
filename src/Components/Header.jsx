@@ -68,7 +68,7 @@ function Header({commonData}) {
                 </li>
                 <li>
                   <Link
-                    to="/AboutUs"
+                    to="/about-Us"
                     className="hover:text-purple-600 transition duration-200"
                   >
                     About
