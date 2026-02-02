@@ -10,7 +10,7 @@ function CareerSupport() {
 
   })
   return (
-    <div className="bg-gradient-to-br from-purple-300 to-yellow-50 min-h-screen px-6 lg:px-24 py-16">
+    <div className="bg-gradient from-purple-300 to-yellow-50 min-h-screen px-6 lg:px-24 py-16">
 
       <h1 className="text-5xl font-extrabold text-purple-800 mb-8">
         Career Support 🚀
