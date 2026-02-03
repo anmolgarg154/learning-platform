@@ -14,6 +14,10 @@ function Login() {
     const s1 = document.getElementById("Lt1").value;
     const s2 = document.getElementById("Lt2").value;
 
+    if(s1.value == "" && s2.value == ""){
+      alert("Both fields are required")
+    }
+
     try {
       const reply = await axios.post(
         "http://localhost:5000/api/v1/users/login",
@@ -21,6 +25,9 @@ function Login() {
         { withCredentials: true } // 🔥 IMPORTANT
       );
 
+       if(s1.value == "" && s2.value == ""){
+      alert("Both fields are required")
+    }
       if (reply.status === 200) {
         dispatch(setLogin('Y'));   // ✅ THIS UPDATES REDUX
         alert("Login successfully");
