@@ -78,7 +78,31 @@ function CourseDetails() {
       level: "Beginner",
       price: 699,
       features: ["Design Principles", "User Research", "Wireframing & Prototyping", "Figma & Design Tools", "Usability Testing", "Real Design Case Studies",],
-    },];
+    },
+    {
+      id: 7,
+      title: "Java(Core)",
+      subtitle: "Master the fundamentals of Java programming",
+      image: "https://static.vecteezy.com/system/resources/previews/022/100/214/original/java-logo-transparent-free-png.png",
+      description: "Learn Java fundamentals including OOP concepts, data structures, and best practices for building robust applications.",
+      duration: "6 Weeks",
+      level: "Beginner",
+      price: 699,
+      features: ["Design Principles", "User Research", "Wireframing & Prototyping", "Figma & Design Tools", "Usability Testing", "Real Design Case Studies",],
+    },
+    {
+      id: 8,
+      title: "Python Programming",
+      subtitle: "Master Python for automation and data science",
+      image: "https://www.pngmart.com/files/23/Python-Logo-PNG-Image.png",
+      description: "Learn Python programming from basics to advanced concepts, including libraries and frameworks for automation and data science.",
+
+      duration: "5 Weeks",
+      level: "Beginner",
+      price: 699,
+      features: ["Design Principles", "User Research", "Wireframing & Prototyping", "Figma & Design Tools", "Usability Testing", "Real Design Case Studies",],
+    },
+  ];
 
   const course = courses.find(c => c.id === Number(id));
   console.log("id:",course)

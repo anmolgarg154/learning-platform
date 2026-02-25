@@ -47,6 +47,18 @@ function Courses() {
       category: "design",
       image: "https://cdn-icons-png.flaticon.com/512/1055/1055687.png",
     },
+    {
+      id: 7,
+      title: "Java(Core)",
+      category: "development",
+      image: "https://static.vecteezy.com/system/resources/previews/022/100/214/original/java-logo-transparent-free-png.png",
+    },
+    {
+      id: 8, 
+      title: "Python Programming",
+      category: "development",
+      image: "https://www.pngmart.com/files/23/Python-Logo-PNG-Image.png",
+    },
   ];
 
   const [activeCategory, setActiveCategory] = useState("all");
