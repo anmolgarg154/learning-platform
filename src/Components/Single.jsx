@@ -11,6 +11,8 @@ import {
 } from "@heroicons/react/24/outline";
 
 function Single({ courseTitle }) {
+
+  
   return (
     <div className="bg-gradient-to-br from-purple-300 to-yellow-50 mt-8 rounded-xl shadow-lg p-4 md:p-10 mx-2 md:mx-4">
 
@@ -34,7 +36,7 @@ function Single({ courseTitle }) {
             </p>
 
             <button className="w-full md:w-auto px-6 md:px-8 py-3 md:py-4 bg-purple-700 text-white text-lg md:text-xl font-bold rounded-xl shadow-lg hover:bg-purple-800 hover:scale-105 transition-all duration-300">
-              Start Learning Now 🚀
+              Start Learning Now 🚀 
             </button>
           </div>
 
