@@ -15,6 +15,7 @@ import AddCourse from "./Components/Admin/AddCourse"
 import NewCourses from "./Components/NewCourses";
 import Profile from "./Components/Profile";
 import Admin from "./Components/Admin/Admin";
+import  Users  from "./Components/Admin/Users";
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
 
       {/* Admin route (no header/footer) */}
       <Route path="/admin" element={<Admin/>} />
+      <Route path="/user" element={<Users/>} />
     </Routes>
   );
 }

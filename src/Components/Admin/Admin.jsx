@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import AddCourse from './AddCourse'
+import  Users from './Users'
 
 function Admin() {
     const [activeTab, setActiveTab] = useState("AddCourse")
@@ -22,6 +23,11 @@ function Admin() {
                             activeTab={activeTab}
                             setActiveTab={setActiveTab}
                             tabName="AddCourse"
+                        />
+                        <SidebarItem
+                            activeTab={activeTab}
+                            setActiveTab={setActiveTab}
+                            tabName="Users"
                         />
                         <SidebarItem
                             activeTab={activeTab}
@@ -64,6 +70,9 @@ const renderContent = (activeTab) => {
 
         case "AddCourse":
             return <AddCourse />
+        
+        case "Users":
+            return  <Users/>
 
         case "Course Management":
             return (
