@@ -1,24 +1,27 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 function Users() {
     const [users, setUsers] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
+
     const usersPerPage = 5;
 
-    // 🔹 Dummy data (replace with API)
+    // ✅ Fetch API instead of dummy data
     useEffect(() => {
-        const dummyUsers = [
-            { id: 1, name: "Anmol", email: "anmol@gmail.com", upi: "anmol@upi" },
-            { id: 2, name: "Rahul", email: "rahul@gmail.com", upi: "rahul@upi" },
-            { id: 3, name: "Priya", email: "priya@gmail.com", upi: "priya@upi" },
-            { id: 4, name: "Amit", email: "amit@gmail.com", upi: "amit@upi" },
-            { id: 5, name: "Neha", email: "neha@gmail.com", upi: "neha@upi" },
-            { id: 6, name: "Ravi", email: "ravi@gmail.com", upi: "ravi@upi" },
-        ];
-        setUsers(dummyUsers);
+        axios.get("http://localhost:5000/admin/users")
+            .then((reply) => {
+                if (reply.status === 200) {
+                    setUsers(reply.data.data); // ✅ correct data path
+                    console.log(reply.data.data);
+                }
+            })
+            .catch((error) => {
+                console.error("Error fetching users:", error);
+            });
     }, []);
 
-    // 🔹 Pagination logic
+    // ✅ Pagination logic
     const indexOfLastUser = currentPage * usersPerPage;
     const indexOfFirstUser = indexOfLastUser - usersPerPage;
     const currentUsers = users.slice(indexOfFirstUser, indexOfLastUser);
@@ -31,42 +34,45 @@ function Users() {
                 Users Management
             </h1>
 
-            {/* TABLE (Desktop) */}
+            {/* ✅ TABLE (Desktop) */}
             <div className="hidden md:block overflow-x-auto">
                 <table className="w-full bg-white shadow rounded-lg">
                     <thead className="bg-gray-200">
                         <tr>
-                            <th className="p-3 text-left">Name</th>
+                            <th className="p-3 text-left">Id</th>
+                            <th className="p-3 text-left">Username</th>
                             <th className="p-3 text-left">Email</th>
-                            <th className="p-3 text-left">UPI ID</th>
-                            <th className="p-3 text-left">Phone No.</th>
-
+                            <th className="p-3 text-left">Phone Number</th>
+                            <th className="p-3 text-left">Role</th>
                         </tr>
                     </thead>
                     <tbody>
                         {currentUsers.map((user) => (
-                            <tr key={user.id} className="border-b">
-                                <td className="p-3">{user.name}</td>
-                                <td className="p-3">{user.email}</td>
-                                <td className="p-3">{user.upi}</td>
+                            <tr key={user._id} className="border-b">
+                                <td className="p-3">{user._id}</td>
+                                <td className="p-3">{user.Username}</td>
+                                <td className="p-3">{user.Email}</td>
+                                <td className="p-3">{user.PhoneNumber}</td>
+                                <td className="p-3">{user.role}</td>
                             </tr>
                         ))}
                     </tbody>
                 </table>
             </div>
 
-            {/* CARDS (Mobile) */}
-            <div className="grid gap-4 md:hidden">
+            {/* ✅ CARDS (Mobile) */}
+            {/* <div className="grid gap-4 md:hidden overflow-hidden">
                 {currentUsers.map((user) => (
-                    <div key={user.id} className="bg-white p-4 rounded-lg shadow">
-                        <p><strong>Name:</strong> {user.name}</p>
-                        <p><strong>Email:</strong> {user.email}</p>
-                        <p><strong>UPI:</strong> {user.upi}</p>
+                    <div key={user._id} className="bg-white p-4 rounded-lg shadow">
+                        <p><strong>Name:</strong> {user.Username}</p>
+                        <p><strong>Email:</strong> {user.Email}</p>
+                        <p><strong>Phone:</strong> {user.PhoneNumber}</p>
+                        <p><strong>Role:</strong> {user.role}</p>
                     </div>
                 ))}
-            </div>
+            </div> */}
 
-            {/* PAGINATION */}
+            {/* ✅ PAGINATION */}
             <div className="flex justify-center mt-6 gap-2 flex-wrap">
                 {[...Array(totalPages)].map((_, index) => (
                     <button

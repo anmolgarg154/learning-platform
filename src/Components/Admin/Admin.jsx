@@ -56,11 +56,11 @@ const renderContent = (activeTab) => {
         case "Main":
             return (
                 <div>
-                    <h1 className="text-2xl font-bold mb-4 text-center">
+                    <h1 className="text-2xl  font-bold mb-4 text-center">
                         Admin Dashboard
                     </h1>
 
-                    <div className="grid grid-cols-3 gap-4">
+                    <div className="grid grid-cols-1 gap-4">
                         <div className="w-full bg-blue-300 h-60 rounded-xl flex items-center justify-center"></div>
                         <div className="w-full bg-blue-300 h-60 rounded-xl flex items-center justify-center"></div>
                         <div className="w-full bg-blue-300 h-60 rounded-xl flex items-center justify-center"></div>
