@@ -12,42 +12,48 @@ function Login() {
   const [email, setEmail]= useState("");
   const [password , setPassword] = useState("");
   const [loading , setLoading] = useState(false)
-
- const doLogin = async()=>{
-  if(!email && !password){
-    alert("both fields are required");
+const doLogin = async () => {
+  if (!email || !password) {
+    alert("Both fields are required");
     return;
   }
 
   try {
     setLoading(true);
-    const reply = await axios.post("http://localhost:5000/api/v1/users/login",{
-          Email: email,
-          Password: password,
-        },
-        { withCredentials: true });
 
-        console.log("login", reply.data)
+    const reply = await axios.post(
+      "http://localhost:5000/api/v1/users/login",
+      {
+        Email: email,
+        Password: password,
+      },
+      { withCredentials: true }
+    );
 
-        const token = reply.data?.data?.accessToken;
-        if(token){
-          localStorage.setItem("token",token)
-          localStorage.setItem("user",reply?.data?.data?.user)
+    console.log("login", reply.data);
 
-          dispatch(setLogin("Y"));
-          alert("login successfully");
-          nav("/")
-        }else {
-        alert("Token not received");
-      }
-    
+    const token = reply.data?.data?.accessToken;
+    const user = reply.data?.data?.user;
+
+    if (token) {
+      // ✅ FIXED STORAGE
+      localStorage.setItem("token", token);
+      localStorage.setItem("user", JSON.stringify(user));
+
+      dispatch(setLogin("Y"));
+
+      nav("/");
+    } else {
+      alert("Token not received");
+    }
+
   } catch (error) {
-     console.error(error);
-      alert("Invalid email or password");
+    console.error(error);
+    alert("Invalid email or password");
   } finally {
-       setLoading(false)
+    setLoading(false);
   }
- }
+};
  return (
   <div className="min-h-screen flex items-center justify-center relative overflow-hidden">
       

@@ -1,34 +1,51 @@
 import { connect } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { setLogin } from "../Action";
 import logo from "../Components/Images/Images.png";
 import { Link } from "react-router-dom";
 
-function Header({commonData}) {
-  function f1()
-    {
-        return(
-            <>
-                <li className="nav-item active">
-                    <Link className="nav-link" to="/register">Register</Link>
-                </li>
-                <li className="nav-item active">
-                    <Link className="nav-link" to="/login">Login</Link>
-                </li>
-            </>
-        );
+function Header({ commonData }) {
+  const dispatch = useDispatch();
+
+  // ✅ Restore login from localStorage on refresh
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    if (token) {
+      dispatch(setLogin("Y"));
     }
-    function f2()
-    {
-        return(
-            <>
-                <li className="nav-item active">
-                    <Link className="nav-link" to="/profile">My Profile</Link>
-                </li>
-                <li className="nav-item active">
-                    <Link className="nav-link" to="/logout">Logout</Link>
-                </li>
-            </>
-        );
-    }
+  }, [dispatch]);
+
+  // ✅ Check token directly (MAIN FIX)
+  const token = localStorage.getItem("token");
+
+  function f1() {
+    return (
+      <>
+        <li className="nav-item active">
+          <Link className="nav-link" to="/register">Register</Link>
+        </li>
+        <li className="nav-item active">
+          <Link className="nav-link" to="/login">Login</Link>
+        </li>
+      </>
+    );
+  }
+
+  function f2() {
+    return (
+      <>
+        <li className="nav-item active">
+          <Link className="nav-link" to="/profile">My Profile</Link>
+        </li>
+        <li className="nav-item active">
+          <Link className="nav-link" to="/logout">Logout</Link>
+        </li>
+      </>
+    );
+  }
+
   return (
     <>
       <div className="w-full bg-white shadow-sm">
@@ -74,8 +91,10 @@ function Header({commonData}) {
                     About
                   </Link>
                 </li>
-               
-                {commonData.isLogin=== 'Y'? f2(): f1() }
+
+                {/* ✅ FIXED LOGIC (NO UI CHANGE) */}
+                {token ? f2() : f1()}
+
               </ul>
             </nav>
           </header>
@@ -86,6 +105,6 @@ function Header({commonData}) {
   );
 }
 
-let connectToStore = (state)=>({commonData:state})
+let connectToStore = (state) => ({ commonData: state });
 
-export default connect (connectToStore) (Header);
+export default connect(connectToStore)(Header);
