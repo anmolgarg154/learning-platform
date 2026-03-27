@@ -49,48 +49,85 @@ function Login() {
   }
  }
  return (
- <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="w-[350px] bg-white shadow-lg rounded-xl p-6">
+  <div className="min-h-screen flex items-center justify-center relative overflow-hidden">
+      
+      {/* Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-400 via-pink-300 to-yellow-200 blur-3xl scale-110"></div>
+      <div className="absolute inset-0 bg-black/50"></div>
+
+      {/* Main Card */}
+      <div className="relative z-10 w-[95%] max-w-5xl rounded-2xl bg-white/20 backdrop-blur-xl shadow-2xl overflow-hidden">
         
-        <h2 className="text-2xl font-bold text-center mb-6">
-          Login
-        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2">
 
-        {/* Email */}
-        <input
-          type="email"
-          placeholder="Enter Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="w-full mb-3 p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
-        />
+          {/* LEFT SIDE */}
+          <div className="hidden md:flex flex-col justify-center items-center text-white p-10">
+            <h1 className="text-4xl font-bold mb-4">
+              Welcome Back 👋
+            </h1>
+            <p className="text-white/80 text-lg text-center max-w-sm">
+              Login to access your dashboard and continue your journey with us.
+            </p>
+          </div>
 
-        {/* Password */}
-        <input
-          type="password"
-          placeholder="Enter Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          className="w-full mb-4 p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
-        />
+          {/* RIGHT SIDE */}
+          <div className="p-8 md:p-12">
+            <div className="text-center mb-6 md:hidden">
+              <h1 className="text-3xl font-bold text-white">Welcome Back</h1>
+              <p className="text-sm text-white/70 mt-1">Login to your account</p>
+            </div>
 
-        {/* Button */}
-        <button
-          onClick={doLogin}
-          disabled={loading}
-          className="w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 transition"
-        >
-          {loading ? "Logging in..." : "Login"}
-        </button>
+            <div className="flex flex-col gap-4">
 
-        {/* Register Link */}
-        <p className="text-center text-sm mt-4">
-          Don’t have an account?{" "}
-          <Link to="/register" className="text-blue-500 hover:underline">
-            Register
-          </Link>
-        </p>
+              {/* Email */}
+              <input
+                type="email"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full rounded-lg bg-white/10 border border-white/20 px-4 py-3 text-white placeholder-white/60 focus:outline-none"
+              />
 
+              {/* Password */}
+              <input
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="w-full rounded-lg bg-white/10 border border-white/20 px-4 py-3 text-white placeholder-white/60 focus:outline-none"
+              />
+
+              <div className="flex items-center justify-between text-sm text-white/70">
+                <label className="flex items-center gap-2 cursor-pointer">
+                  <input type="checkbox" className="accent-white" />
+                  Remember me
+                </label>
+                <span className="cursor-pointer hover:underline">
+                  Forgot password?
+                </span>
+              </div>
+
+              {/* Button */}
+              <button
+                type="button"
+                className="mt-2 w-full rounded-lg bg-white text-green-600 font-semibold py-3 hover:bg-white/90 transition"
+                onClick={doLogin}
+              >
+                Login
+              </button>
+            </div>
+
+            <p className="text-center text-sm text-white/70 mt-6">
+              Don't have an account?
+              <Link to="/register">
+                <span className="text-white font-medium cursor-pointer hover:underline ml-1">
+                  Register
+                </span>
+              </Link>
+            </p>
+          </div>
+
+        </div>
       </div>
     </div>
   );
