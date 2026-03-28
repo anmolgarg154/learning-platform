@@ -3,22 +3,17 @@ import axios from "axios";
 import { Home, BookOpen, Edit, Lock, LogOut } from "lucide-react";
 
 function Profile() {
-    // =========================
-    // STATE (belongs to Profile component)
-    // =========================
+   
     const [activeTab, setActiveTab] = useState("dashboard");
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
-    // =========================
-    // FETCH PROFILE ON LOAD
-    // =========================
     useEffect(() => {
         const fetchProfile = async () => {
             try {
                 const res = await axios.get(
                     "http://localhost:5000/api/v1/users/profile",
-                    { withCredentials: true } // cookies (JWT)
+                    { withCredentials: true } 
                 );
 
                 setUser(res.data.data);
@@ -79,10 +74,9 @@ function Profile() {
                 </div>
             </aside>
 
-            {/* RIGHT CONTENT */}
+           
             <main className="flex-1 p-8">
                 <div className="bg-white rounded-xl shadow p-8 min-h-[300px]">
-                    {/* 🔴 CHANGED: pass setUser to renderContent */}
                     {renderContent(activeTab, user, setUser, loading)}
                 </div>
             </main>
@@ -90,12 +84,6 @@ function Profile() {
     );
 }
 
-/* ======================================================
-   RIGHT SIDE CONTENT
-   NOTE:
-   - renderContent is OUTSIDE Profile
-   - so we MUST pass setUser if we want to update state
-====================================================== */
 const renderContent = (tab, user, setUser, loading) => {
 
     if (loading) {
@@ -104,7 +92,7 @@ const renderContent = (tab, user, setUser, loading) => {
 
     switch (tab) {
 
-        /* ================= DASHBOARD ================= */
+      
         case "dashboard":
             return (
                 <div className="w-full">
@@ -132,7 +120,6 @@ const renderContent = (tab, user, setUser, loading) => {
                                 <input type="file" id="profileImage" className="hidden" />
                             </div>
 
-                            {/* USER INFO */}
                             <div className="text-center sm:text-left flex-1">
                                 <h2 className="text-xl font-semibold">
                                     {user?.Username}
@@ -146,7 +133,6 @@ const renderContent = (tab, user, setUser, loading) => {
                 </div>
             );
 
-        /* ================= UPDATE PROFILE ================= */
         case "update":
             return (
                 <>
@@ -158,7 +144,7 @@ const renderContent = (tab, user, setUser, loading) => {
                             e.preventDefault();
 
                             try {
-                                // 🔴 CHANGED: PUT request updates DB
+                              
                                 const res = await axios.put(
                                     "http://localhost:5000/api/v1/users/profile",
                                     {
@@ -169,7 +155,7 @@ const renderContent = (tab, user, setUser, loading) => {
                                     { withCredentials: true }
                                 );
 
-                                // 🔴 CHANGED: sync UI with updated DB data
+                               
                                 setUser(res.data.data);
 
                                 alert("Profile updated successfully");
@@ -182,7 +168,6 @@ const renderContent = (tab, user, setUser, loading) => {
                             type="text"
                             className="w-full border p-2 rounded"
                             value={user.Username}
-                            // 🔴 CHANGED: setUser now works (passed as argument)
                             onChange={(e) =>
                                 setUser({ ...user, Username: e.target.value })
                             }
@@ -219,7 +204,6 @@ const renderContent = (tab, user, setUser, loading) => {
                 </>
             );
 
-        /* ================= CHANGE PASSWORD ================= */
         case "password":
             return (
                 <>
@@ -233,7 +217,6 @@ const renderContent = (tab, user, setUser, loading) => {
     }
 };
 
-/* ================= SIDEBAR ITEM ================= */
 const SidebarItem = ({ icon, text, active, onClick, danger }) => {
     return (
         <button
