@@ -9,6 +9,13 @@ function CareerSupport() {
     Role: "",
 
   })
+  function handleChange(e) {
+    if(e.target.type === "text"){
+
+    }
+    setform({ ...form, [e.target.name]: e.target.value });
+
+  }
   return (
     <div className="bg-gradient from-purple-300 to-yellow-50 min-h-screen px-6 lg:px-24 py-16">
 
@@ -132,21 +139,23 @@ function CareerSupport() {
         </div>
 
 
-        {/* ------------------------------------------------ */}
+       
 
 
         <div className="bg-white w-[50%] max-w-2xl rounded-2xl shadow-xl p-8">
           <h2 className="text-3xl font-bold text-center text-purple-800 mb-8">
             Apply for Career Support
           </h2>
+           
 
+            {/* form  */}
           <form className="space-y-5">
           
             <input
               type="text"
               id=""
               placeholder="Full Name"
-              className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-purple-500"
+              className="w-full border required:* border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-purple-500"
             />
 
             <input
@@ -193,6 +202,7 @@ function CareerSupport() {
             {/* Button */}
             <button
               type="submit"
+              onClick={handleChange}
               className="w-full bg-purple-700 text-white py-3 rounded-lg font-semibold hover:bg-purple-800 transition"
             >
               Apply Now
